@@ -3,7 +3,7 @@ require "json"
 
 class GifBot < Sinatra::Base
   @@gifs = {
-    'pool kid' => "http://i.imgur.com/V6ke55U.gif"
+    'amazed owl' => 'https://raw.githubusercontent.com/mohicanlove/reaction-gifs/master/amazed-owl.gif'
   }
 
   post "/" do
