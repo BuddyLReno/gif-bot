@@ -3,7 +3,8 @@ require "json"
 
 class GifBot < Sinatra::Base
   @@gifs = {
-    'amazed owl' => 'https://raw.githubusercontent.com/mohicanlove/reaction-gifs/master/amazed-owl.gif'
+    'amazed owl' => 'https://raw.githubusercontent.com/mohicanlove/reaction-gifs/master/amazed-owl.gif',
+    'sheldon throwing papers' => 'https://raw.githubusercontent.com/mohicanlove/reaction-gifs/master/annoyed-sheldon-throwing-papers.gif'
   }
 
   post "/" do
