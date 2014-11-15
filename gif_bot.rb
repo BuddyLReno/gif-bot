@@ -27,7 +27,7 @@ class GifBot < Sinatra::Base
 
   def random_gif
     # @random_gif ||= Giphy.search(search_term).sample
-    if @@gifs.has_key?(search_term) do
+    if @@gifs.key?(search_term) do
       @random_gif = @@gifs[search_term]
     else
       false
