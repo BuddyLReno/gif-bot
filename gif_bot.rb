@@ -2,10 +2,6 @@ require "sinatra/base"
 require "json"
 
 class GifBot < Sinatra::Base
-  @@gifs = {
-    'pool kid' => 'http://i.imgur.com/V6ke55U.gif'
-  }
-
   post "/" do
     content_type :json
 
@@ -26,9 +22,13 @@ class GifBot < Sinatra::Base
   end
 
   def random_gif
+    gifs = {
+      'pool kid' => 'http://i.imgur.com/V6ke55U.gif'
+    }
+
     # @random_gif ||= Giphy.search(search_term).sample
-    if @@gifs.key?(search_term) do
-      @random_gif = @@gifs[search_term]
+    if gifs.key?(search_term) do
+      @random_gif = gifs[search_term]
     else
       false
     end
