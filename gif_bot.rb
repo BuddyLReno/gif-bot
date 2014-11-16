@@ -10,9 +10,8 @@ class GifBot < Sinatra::Base
   post "/" do
     content_type :json
 
-    if params_present? && random_gif
-      # format_message(random_gif.original_image.url)
-      format_message(random_gif)
+    if params_present? && find_gif
+      format_message(find_gif)
     else
       format_message("I couldn't find a gif :cry:")
     end
@@ -26,10 +25,9 @@ class GifBot < Sinatra::Base
     { text: message }.to_json
   end
 
-  def random_gif
-    # @random_gif ||= Giphy.search(search_term).sample
+  def find_gif
     if @@gifs.key?(search_term)
-      @random_gif = @@gifs[search_term]
+      @random_gif = @@gifs[search_term] + cache_buster
     else
       false
     end
@@ -37,5 +35,9 @@ class GifBot < Sinatra::Base
 
   def search_term
     params[:text].gsub(params[:trigger_word], "").strip.downcase
+  end
+
+  def cache_buster
+    @buster_string = "?buster=#{Random.rand(1..10000000000)}"
   end
 end
